@@ -1,0 +1,8 @@
+7
+ls	-	/bin	-l -a -x
+ps	ls	/bin	-e ax 
+echo	-	-	hello
+pwd	echo	/bin	NULL
+who	pwd	-	-d
+cat	ls	-	floyd.txt
+ifconfig ls 	/sbin	NULL

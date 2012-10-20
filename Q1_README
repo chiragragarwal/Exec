@@ -1,0 +1,63 @@
+Author	: Chirag R. Agarwal
+ID		: 2009B4A7606G
+Problem	: Experiencing exec() commands in Linux
+
+FILES IN MY FOLDER :
+
+1) q1_main.c :
+	It is the main driver file. It further forks all other processes.
+	
+2) function.c :
+	It is the implementation file. It is the heart of the code.
+	
+3) HEADER.h :
+	It is the header file that contains all the variable and function declarations.
+
+4) input.txt :
+	The input file. The input format is as follows (words are '\t' separated) :
+	
+	7
+	ls	-	/bin	-l -a -x
+	ps	ls	/bin	-e ax 
+	echo	-	-	hello
+	pwd	echo	/bin	NULL
+	who	pwd	-	-d
+	cat	ls	-	floyd.txt
+	ifconfig ls 	/sbin	NULL
+	
+	The first line contains the total number of commands to be executed followed by the commands and dependencies as mentioned in the question.
+	
+	
+5) floyd.txt :
+	Just an arbitrary text file that contains some text. It is used to demonstrate the 'CAT' operation.
+	
+6) Makefile :
+	The Makefile.
+
+7) Q1_README :
+	What you are reading presently.
+	
+----------------------------------------------------------------------------------------------
+
+HOW TO EXECUTE MY PROGRAM ?
+
+Simply in the outer folder, type 'make'
+This will compile the process and create and executable named 'exe'
+
+Now type './exe input.txt' to execute the program.
+
+If you do not enter the argument, an appropriate error message is displayed on the terminal before exiting.
+All the commands are excuted and the output is displayed on the terminal. 
+I've added an extra line before executing each command to help distinguish between them.
+
+To clean all the extra files created by the program type "make clean" on the terminal.
+
+---------------------------------------------------------------------------------------------
+
+STRUCTURE :
+
+I've read the input.txt file line by line and stored them in separate arrays arrA and arrB as expected in the question.
+The main process forks two child processes A and B and excutes the commands in the arrays arrA and arrB respectively and concurrently.
+The processes A and B fork a child everytime a new command is encountered. The next command in that array is executed when this current process successfully terminates.
+
+
